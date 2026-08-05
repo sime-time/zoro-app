@@ -8,7 +8,8 @@
     "scheme": "zoroapp",
     "userInterfaceStyle": "automatic",
     "ios": {
-      "icon": "./assets/expo.icon"
+      "icon": "./assets/expo.icon",
+      "bundleIdentifier": "com.anonymous.zoro-app"
     },
     "android": {
       "adaptiveIcon": {
@@ -17,7 +18,8 @@
         "backgroundImage": "./assets/images/android-icon-background.png",
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.anonymous.zoroapp"
     },
     "web": {
       "output": "static",
@@ -31,6 +33,17 @@
           "backgroundColor": "#208AEF",
           "image": "./assets/images/splash-icon.png",
           "imageWidth": 76
+        }
+      ],
+      [
+        "expo-font",
+        {
+          "fonts": [
+            "./assets/fonts/Onest-Regular.otf",
+            "./assets/fonts/Onest-Medium.otf",
+            "./assets/fonts/Onest-SemiBold.otf",
+            "./assets/fonts/Onest-Bold.otf"
+          ]
         }
       ]
     ],

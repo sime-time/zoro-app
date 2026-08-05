@@ -28,16 +28,18 @@
     "react-native-worklets": "0.10.1"
   },
   "devDependencies": {
+    "@biomejs/biome": "2.5.7",
     "@types/react": "~19.2.2",
     "typescript": "~6.0.3"
   },
   "scripts": {
     "start": "expo start",
     "reset-project": "node ./scripts/reset-project.js",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
     "web": "expo start --web",
-    "lint": "expo lint"
+    "lint": "expo lint",
+    "biome": "bunx --bun @biomejs/biome check --write"
   },
   "private": true
 }
