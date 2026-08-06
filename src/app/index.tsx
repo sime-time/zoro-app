@@ -53,7 +53,7 @@ export default function Index() {
   const insets = useSafeAreaInsets();
 
   return (
-    <SafeAreaView style={[s.flex1]}>
+    <SafeAreaView style={s.flex1}>
       <FlatList
         data={foods}
         keyExtractor={(item) => item.id}
@@ -64,11 +64,13 @@ export default function Index() {
           { paddingTop: insets.top * 1.5 },
         ]}
         ListHeaderComponent={
-          <View style={s.mb4}>
-            <Text style={[s.textLg, s.fontSemibold, { color: c.foreground }]}>
+          <View
+            style={[s.mb4, s.flex1, s.flexRow, s.itemsCenter, s.justifyBetween]}
+          >
+            <Text style={[s.text2xl, s.fontSemibold, { color: c.foreground }]}>
               Today
             </Text>
-            <Text style={[s.textBase, s.fontMedium, { color: c.muted }]}>
+            <Text style={[s.textLg, s.fontMedium, { color: c.muted }]}>
               240 cals
             </Text>
           </View>

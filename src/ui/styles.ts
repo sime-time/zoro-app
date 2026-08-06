@@ -320,6 +320,24 @@ export const s = StyleSheet.create({
   border2: {
     borderWidth: 2,
   },
+  borderT0: {
+    borderTopWidth: 0,
+  },
+  borderT1: {
+    borderTopWidth: StyleSheet.hairlineWidth,
+  },
+  borderT2: {
+    borderTopWidth: 2,
+  },
+  borderB0: {
+    borderBottomWidth: 0,
+  },
+  borderB1: {
+    borderBottomWidth: StyleSheet.hairlineWidth,
+  },
+  borderB2: {
+    borderBottomWidth: 2,
+  },
 
   // Typography
   textXs: {

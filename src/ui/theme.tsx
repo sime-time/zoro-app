@@ -80,7 +80,7 @@ export const darkColors: ThemeColors = {
   mutedForeground: "#C7C7C7",
   mutedBackground: "#242424",
 
-  success: "#4ADE80",
+  success: "#388A3E",
   successForeground: "#052E16",
 
   warning: "#F5B544",
