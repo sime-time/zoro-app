@@ -1,6 +1,6 @@
 import { Drawer } from "expo-router/drawer";
 import { SymbolView } from "expo-symbols";
-import { CameraButton } from "@/components/CameraButton.ios";
+import { CameraButton } from "@/components/camera/CameraButton";
 import { DrawerButton } from "@/components/drawer/DrawerButton";
 import { useTheme } from "@/ui/theme";
 
