@@ -1,15 +1,15 @@
 {
   "expo": {
-    "name": "zoro-app",
-    "slug": "zoro-app",
+    "name": "zoro-fit",
+    "slug": "zoro-fit",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "zoroapp",
+    "scheme": "zorofit",
     "userInterfaceStyle": "automatic",
     "ios": {
       "icon": "./assets/expo.icon",
-      "bundleIdentifier": "com.anonymous.zoro-app"
+      "bundleIdentifier": "com.simeon.zoro-fit"
     },
     "android": {
       "adaptiveIcon": {
@@ -19,7 +19,7 @@
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
       "predictiveBackGestureEnabled": false,
-      "package": "com.anonymous.zoroapp"
+      "package": "com.simeon.zorofit"
     },
     "web": {
       "output": "static",
@@ -50,6 +50,13 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "a2111f12-8209-4632-a31d-a80b7b71a404"
+      }
+    },
+    "owner": "simetime"
   }
 }
