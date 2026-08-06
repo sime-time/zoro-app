@@ -393,8 +393,14 @@ export const s = StyleSheet.create({
   },
 
   // Size
+  wAuto: {
+    width: "auto",
+  },
   wFull: {
     width: "100%",
+  },
+  hAuto: {
+    width: "auto",
   },
   hFull: {
     height: "100%",

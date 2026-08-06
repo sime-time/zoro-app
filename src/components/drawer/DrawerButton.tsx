@@ -1,8 +1,7 @@
 import { useNavigation } from "expo-router";
 import type { DrawerNavigationProp } from "expo-router/drawer";
 import { SymbolView } from "expo-symbols";
-import { Pressable } from "react-native";
-import { s } from "@/ui/styles";
+import { Button } from "@/components/Button";
 import { useTheme } from "@/ui/theme";
 
 export function DrawerButton() {
@@ -11,24 +10,12 @@ export function DrawerButton() {
   const { c } = useTheme();
 
   return (
-    <Pressable
-      onPress={() => navigation.openDrawer()}
-      style={[
-        s.p2,
-        s.roundedFull,
-        s.justifyCenter,
-        s.itemsCenter,
-        {
-          backgroundColor: c.surfaceSecondary,
-          borderColor: c.border,
-        },
-      ]}
-    >
+    <Button isIconOnly={true} onPress={() => navigation.openDrawer()}>
       <SymbolView
-        name={{ ios: "line.3.horizontal", android: "menu" }}
-        size={22}
+        name={{ ios: "sidebar.left", android: "menu" }}
+        size={26}
         tintColor={c.foreground}
       />
-    </Pressable>
+    </Button>
   );
 }

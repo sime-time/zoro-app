@@ -16,10 +16,10 @@ export function DrawerNav() {
         headerTitle: "",
         headerTransparent: true,
         headerLeftContainerStyle: {
-          paddingLeft: 10,
+          paddingLeft: 16,
         },
         headerRightContainerStyle: {
-          paddingRight: 10,
+          paddingRight: 16,
         },
         sceneStyle: {
           backgroundColor: c.background,
@@ -28,7 +28,7 @@ export function DrawerNav() {
           backgroundColor: c.background,
           width: 300,
         },
-        drawerActiveBackgroundColor: c.surface,
+        drawerActiveBackgroundColor: c.surfaceTertiary,
         drawerActiveTintColor: c.foreground,
         drawerInactiveTintColor: c.foreground,
         drawerItemStyle: {
@@ -87,7 +87,7 @@ export function DrawerNav() {
           drawerLabel: "Settings",
           drawerIcon: ({ color, size }) => (
             <SymbolView
-              name={{ ios: "gearshape", android: "settings" }}
+              name={{ ios: "gearshape.fill", android: "settings" }}
               size={size}
               tintColor={color}
             />

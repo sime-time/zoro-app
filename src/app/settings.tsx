@@ -1,10 +1,10 @@
-import { SymbolView } from "expo-symbols";
 import { ScrollView, Text } from "react-native";
 import {
   SafeAreaView,
   useSafeAreaInsets,
 } from "react-native-safe-area-context";
-import { Button } from "@/components/Button";
+import { SettingsGroup } from "@/components/settings/SettingsGroup";
+import { UpgradeButton } from "@/components/settings/UpgradeButton";
 import { s } from "@/ui/styles";
 import { useTheme } from "@/ui/theme";
 
@@ -26,11 +26,8 @@ export default function SettingsScreen() {
         <Text style={[s.text2xl, s.fontSemibold, { color: c.foreground }]}>
           Settings
         </Text>
-        <Button
-          label="Light Mode"
-          color={c.success}
-          /*icon={<SymbolView name="arrow.up" size={26} tintColor="white" />}*/
-        />
+        <UpgradeButton />
+        <SettingsGroup />
       </ScrollView>
     </SafeAreaView>
   );
