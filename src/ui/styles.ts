@@ -20,6 +20,9 @@ export const s = StyleSheet.create({
   flexWrap: {
     flexWrap: "wrap",
   },
+  flexGrow: {
+    flexGrow: 1,
+  },
 
   // Alignment
   itemsStart: {
@@ -108,6 +111,9 @@ export const s = StyleSheet.create({
   px6: {
     paddingHorizontal: u(6),
   },
+  px8: {
+    paddingHorizontal: u(8),
+  },
 
   py1: {
     paddingVertical: u(1),
@@ -126,6 +132,59 @@ export const s = StyleSheet.create({
   },
   py6: {
     paddingVertical: u(6),
+  },
+  py8: {
+    paddingVertical: u(8),
+  },
+
+  pt1: {
+    paddingTop: u(1),
+  },
+  pt2: {
+    paddingTop: u(2),
+  },
+  pt3: {
+    paddingTop: u(3),
+  },
+  pt4: {
+    paddingTop: u(4),
+  },
+  pt5: {
+    paddingTop: u(5),
+  },
+  pt6: {
+    paddingTop: u(6),
+  },
+  pt7: {
+    paddingTop: u(7),
+  },
+  pt8: {
+    paddingTop: u(8),
+  },
+
+  pb1: {
+    paddingBottom: u(1),
+  },
+  pb2: {
+    paddingBottom: u(2),
+  },
+  pb3: {
+    paddingBottom: u(3),
+  },
+  pb4: {
+    paddingBottom: u(4),
+  },
+  pb5: {
+    paddingBottom: u(5),
+  },
+  pb6: {
+    paddingBottom: u(6),
+  },
+  pb7: {
+    paddingBottom: u(7),
+  },
+  pb8: {
+    paddingBottom: u(8),
   },
 
   // Margin
@@ -163,8 +222,14 @@ export const s = StyleSheet.create({
   mt4: {
     marginTop: u(4),
   },
+  mt5: {
+    marginTop: u(5),
+  },
   mt6: {
     marginTop: u(6),
+  },
+  mt7: {
+    marginTop: u(7),
   },
   mt8: {
     marginTop: u(8),
@@ -182,8 +247,14 @@ export const s = StyleSheet.create({
   mb4: {
     marginBottom: u(4),
   },
+  mb5: {
+    marginBottom: u(5),
+  },
   mb6: {
     marginBottom: u(6),
+  },
+  mb7: {
+    marginBottom: u(7),
   },
   mb8: {
     marginBottom: u(8),

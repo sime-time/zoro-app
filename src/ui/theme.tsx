@@ -63,7 +63,7 @@ export const lightColors: ThemeColors = {
 };
 
 export const darkColors: ThemeColors = {
-  background: "#171717",
+  background: "#131313",
   foreground: "#FFFFFF",
 
   surface: "#242424",
@@ -76,7 +76,7 @@ export const darkColors: ThemeColors = {
   primaryForeground: "#FFFFFF",
   primarySoft: "#0D3325",
 
-  muted: "#9A9A9A",
+  muted: "#7A7A7A",
   mutedForeground: "#C7C7C7",
   mutedBackground: "#242424",
 

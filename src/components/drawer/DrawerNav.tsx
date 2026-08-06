@@ -1,5 +1,7 @@
 import { Drawer } from "expo-router/drawer";
 import { SymbolView } from "expo-symbols";
+import { CameraButton } from "@/components/CameraButton.ios";
+import { DrawerButton } from "@/components/drawer/DrawerButton";
 import { useTheme } from "@/ui/theme";
 
 export function DrawerNav() {
@@ -8,13 +10,23 @@ export function DrawerNav() {
   return (
     <Drawer
       screenOptions={{
-        headerShown: false,
+        headerShown: true,
+        headerLeft: () => <DrawerButton />,
+        headerShadowVisible: false,
+        headerTitle: "",
+        headerTransparent: true,
+        headerLeftContainerStyle: {
+          paddingLeft: 10,
+        },
+        headerRightContainerStyle: {
+          paddingRight: 10,
+        },
         sceneStyle: {
           backgroundColor: c.background,
         },
         drawerStyle: {
           backgroundColor: c.background,
-          width: 280,
+          width: 300,
         },
         drawerActiveBackgroundColor: c.surface,
         drawerActiveTintColor: c.foreground,
@@ -29,6 +41,7 @@ export function DrawerNav() {
       <Drawer.Screen
         name="index"
         options={{
+          headerRight: () => <CameraButton />,
           drawerLabel: "Nutrition",
           drawerIcon: ({ color, size }) => (
             <SymbolView

@@ -6,11 +6,11 @@ import {
   labelStyle,
 } from "@expo/ui/swift-ui/modifiers";
 
-export function ScanButton() {
+export function CameraButton() {
   return (
     <Host matchContents>
       <Button
-        label="Open scanner"
+        label="Open camera"
         systemImage="viewfinder"
         modifiers={[
           buttonStyle("glass"),
