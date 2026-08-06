@@ -14,7 +14,7 @@ export function UpgradeButton() {
       icon={
         <Button isIconOnly disabled size="sm" style={s.rounded}>
           <SymbolView
-            name={{ ios: "arrow.up", android: "arrow_upward" }}
+            name={{ ios: "bolt.fill", android: "electric_bolt" }}
             size={18}
             tintColor={c.foreground}
           />

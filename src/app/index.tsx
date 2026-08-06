@@ -98,12 +98,19 @@ export default function Index() {
             submitBehavior="submit"
             placeholder="Write your food..."
             placeholderTextColor={c.muted}
+            selectionColor={c.primary}
+            cursorColor={c.primary}
             multiline
             textAlignVertical="top"
             autoCorrect
             keyboardType="default"
             returnKeyType="done"
-            style={[s.textLg, s.fontNormal, { color: c.foreground }]}
+            style={[
+              s.textLg,
+              s.fontNormal,
+              s.py0,
+              { color: c.foreground, margin: 0 },
+            ]}
           />
         }
       />

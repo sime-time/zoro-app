@@ -93,6 +93,9 @@ export const s = StyleSheet.create({
     padding: u(8),
   },
 
+  px0: {
+    paddingHorizontal: 0,
+  },
   px1: {
     paddingHorizontal: u(1),
   },
@@ -115,6 +118,9 @@ export const s = StyleSheet.create({
     paddingHorizontal: u(8),
   },
 
+  py0: {
+    paddingVertical: 0,
+  },
   py1: {
     paddingVertical: u(1),
   },

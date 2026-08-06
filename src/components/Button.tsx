@@ -54,6 +54,12 @@ export function Button({
     isLiquidGlassAvailable() &&
     isGlassEffectAPIAvailable();
 
+  // Animations to match Liquid Glass
+  const opacity = useSharedValue(1);
+  const animatedStyle = useAnimatedStyle(() => ({
+    opacity: opacity.value,
+  }));
+
   const innerContent =
     typeof children === "string" || (!children && label) ? (
       <Text
@@ -96,12 +102,6 @@ export function Button({
     );
   }
 
-  // Animations to match Liquid Glass
-  const opacity = useSharedValue(1);
-  const animatedStyle = useAnimatedStyle(() => ({
-    opacity: opacity.value,
-  }));
-
   return (
     <AnimatedPressable
       accessibilityRole="button"
@@ -125,7 +125,7 @@ export function Button({
         {
           opacity,
           backgroundColor: disabled ? c.surfaceTertiary : (color ?? c.surface),
-          borderColor: disabled ? c.muted : c.border,
+          borderColor: c.border,
         },
         animatedStyle,
         style,

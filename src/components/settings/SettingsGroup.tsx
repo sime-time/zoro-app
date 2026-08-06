@@ -1,20 +1,41 @@
-import { type ReactNode, useState } from "react";
-import { Pressable, StyleSheet, Switch, Text, View } from "react-native";
+import { type AndroidSymbol, type SFSymbol, SymbolView } from "expo-symbols";
+import type { ReactNode } from "react";
+import { Pressable, StyleSheet, Text, View } from "react-native";
+import Animated, {
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
+} from "react-native-reanimated";
 import { s, u } from "@/ui/styles";
-import { useTheme } from "@/ui/theme";
+import { type ThemeName, useTheme } from "@/ui/theme";
 
 type SettingRowProps = {
   title: string;
-  subtitle?: string;
-  trailing?: ReactNode;
+  icon: ReactNode;
   onPress?: () => void;
   showDivider?: boolean;
 };
 
+const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
+
+function getThemeLabels(theme: ThemeName) {
+  if (theme === "dark") {
+    return {
+      title: "Light mode",
+      ios: "sun.max" as SFSymbol,
+      android: "sunny" as AndroidSymbol,
+    };
+  }
+  return {
+    title: "Dark mode",
+    ios: "moon" as SFSymbol,
+    android: "moon_stars" as AndroidSymbol,
+  };
+}
+
 export function SettingsGroup() {
-  const { c } = useTheme();
-  const [pushEnabled, setPushEnabled] = useState(true);
-  const [analyticsEnabled, setAnalyticsEnabled] = useState(false);
+  const { c, toggleTheme, resolvedTheme } = useTheme();
+  const themeLabels = getThemeLabels(resolvedTheme);
 
   return (
     <View
@@ -29,28 +50,22 @@ export function SettingsGroup() {
     >
       <SettingRow
         title="Push notifications"
-        showDivider
-        onPress={() => setPushEnabled((value) => !value)}
-        trailing={
-          <Switch
-            value={pushEnabled}
-            onValueChange={setPushEnabled}
-            trackColor={{ false: c.surfaceTertiary, true: c.primary }}
-            ios_backgroundColor={c.surfaceTertiary}
+        icon={
+          <SymbolView
+            name={{ ios: "bell.fill", android: "notifications" }}
+            size={18}
+            tintColor={c.foreground}
           />
         }
+        onPress={() => console.log("Push notifications!")}
+        showDivider
       />
       <SettingRow
-        title="Share usage analytics"
-        onPress={() => setAnalyticsEnabled((value) => !value)}
-        trailing={
-          <Switch
-            value={analyticsEnabled}
-            onValueChange={setAnalyticsEnabled}
-            trackColor={{ false: c.surfaceTertiary, true: c.primary }}
-            ios_backgroundColor={c.surfaceTertiary}
-          />
+        title={themeLabels.title}
+        icon={
+          <SymbolView name={themeLabels} size={18} tintColor={c.foreground} />
         }
+        onPress={toggleTheme}
       />
     </View>
   );
@@ -58,19 +73,29 @@ export function SettingsGroup() {
 
 function SettingRow({
   title,
-  subtitle,
-  trailing,
+  icon,
   onPress,
   showDivider = false,
 }: SettingRowProps) {
   const { c } = useTheme();
+  const opacity = useSharedValue(1);
+  const animatedStyle = useAnimatedStyle(() => ({
+    opacity: opacity.value,
+  }));
 
   return (
-    <Pressable
+    <AnimatedPressable
       accessibilityLabel={title}
       accessibilityRole={onPress ? "button" : undefined}
       disabled={!onPress}
+      onPressIn={() => {
+        opacity.value = withTiming(0.3, { duration: 200 });
+      }}
+      onPressOut={() => {
+        opacity.value = withTiming(1, { duration: 200 });
+      }}
       onPress={onPress}
+      style={animatedStyle}
     >
       {({ pressed }) => (
         <>
@@ -82,19 +107,19 @@ function SettingRow({
               },
             ]}
           >
+            <View style={[styles.icon, { backgroundColor: c.background }]}>
+              {icon}
+            </View>
             <View style={styles.copy}>
               <Text style={[s.textBase, s.fontMedium, { color: c.foreground }]}>
                 {title}
               </Text>
-              {subtitle ? (
-                <Text
-                  style={[s.textSm, s.fontNormal, { color: c.mutedForeground }]}
-                >
-                  {subtitle}
-                </Text>
-              ) : null}
             </View>
-            {trailing ? <View style={styles.trailing}>{trailing}</View> : null}
+            <SymbolView
+              name={{ ios: "chevron.right", android: "chevron_right" }}
+              size={16}
+              tintColor={c.muted}
+            />
           </View>
           {showDivider ? (
             <View
@@ -108,7 +133,7 @@ function SettingRow({
           ) : null}
         </>
       )}
-    </Pressable>
+    </AnimatedPressable>
   );
 }
 
@@ -118,20 +143,24 @@ const styles = StyleSheet.create({
     borderWidth: StyleSheet.hairlineWidth,
   },
   row: {
-    minHeight: u(17),
-    paddingHorizontal: u(4),
-    paddingVertical: u(3),
+    minHeight: u(14),
+    paddingHorizontal: u(3),
+    paddingVertical: u(2),
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    gap: u(4),
+    gap: u(3),
+  },
+  icon: {
+    width: 36,
+    height: 36,
+    padding: 0,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: u(3),
   },
   copy: {
     flex: 1,
-    gap: u(1),
-  },
-  trailing: {
-    marginLeft: u(3),
   },
   divider: {
     height: StyleSheet.hairlineWidth,
