@@ -1,8 +1,6 @@
+import { useHeaderHeight } from "expo-router/build/react-navigation";
 import { ScrollView, Text } from "react-native";
-import {
-  SafeAreaView,
-  useSafeAreaInsets,
-} from "react-native-safe-area-context";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { SettingsGroup } from "@/components/settings/SettingsGroup";
 import { UpgradeButton } from "@/components/settings/UpgradeButton";
 import { s } from "@/ui/styles";
@@ -10,7 +8,7 @@ import { useTheme } from "@/ui/theme";
 
 export default function SettingsScreen() {
   const { c } = useTheme();
-  const insets = useSafeAreaInsets();
+  const headerHeight = useHeaderHeight();
 
   return (
     <SafeAreaView style={s.flex1}>
@@ -19,7 +17,7 @@ export default function SettingsScreen() {
           s.flexGrow,
           s.p6,
           s.gap6,
-          { paddingTop: insets.top * 1.5 },
+          { paddingTop: headerHeight },
         ]}
         showsVerticalScrollIndicator={false}
       >

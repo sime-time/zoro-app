@@ -1,9 +1,7 @@
+import { useHeaderHeight } from "expo-router/build/react-navigation";
 import { useState } from "react";
 import { FlatList, Text, TextInput, View } from "react-native";
-import {
-  SafeAreaView,
-  useSafeAreaInsets,
-} from "react-native-safe-area-context";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { s } from "@/ui/styles";
 import { useTheme } from "@/ui/theme";
 
@@ -27,6 +25,7 @@ const initialFoods: FoodItem[] = [
 ];
 
 export default function Index() {
+  const headerHeight = useHeaderHeight();
   const { c } = useTheme();
   const [foodText, setFoodText] = useState("");
   const [foods, setFoods] = useState(initialFoods);
@@ -50,8 +49,6 @@ export default function Index() {
     setFoodText("");
   };
 
-  const insets = useSafeAreaInsets();
-
   return (
     <SafeAreaView style={s.flex1}>
       <FlatList
@@ -61,7 +58,7 @@ export default function Index() {
           s.p6,
           s.gap3,
           s.flexGrow,
-          { paddingTop: insets.top * 1.5 },
+          { paddingTop: headerHeight },
         ]}
         ListHeaderComponent={
           <View

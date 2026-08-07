@@ -10,7 +10,7 @@ export function CameraButton() {
       onPress={() => console.log("Camera scanner opened")}
     >
       <SymbolView
-        name={{ ios: "viewfinder", android: "scan" }}
+        name={{ ios: "viewfinder", android: "scanner" }}
         size={22}
         tintColor={c.foreground}
       />
