@@ -42,7 +42,6 @@ export function GlassPressable({
     s.overflowHidden,
     s.border1,
     {
-      backgroundColor: disabled ? c.surfaceTertiary : c.surface,
       borderColor: c.border,
     },
     style,
@@ -66,7 +65,14 @@ export function GlassPressable({
           {children}
         </GlassView>
       ) : (
-        <View style={viewStyle}>{children}</View>
+        <View
+          style={[
+            viewStyle,
+            { backgroundColor: disabled ? c.surfaceTertiary : c.surface },
+          ]}
+        >
+          {children}
+        </View>
       )}
     </Pressable>
   );

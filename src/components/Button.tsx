@@ -123,7 +123,6 @@ export function Button({
         isIconOnly ? iconOnlyStyles[size] : sizeStyles[size],
         isIconOnly ? s.roundedFull : s.roundedLg,
         {
-          opacity,
           backgroundColor: disabled ? c.surfaceTertiary : (color ?? c.surface),
           borderColor: c.border,
         },
