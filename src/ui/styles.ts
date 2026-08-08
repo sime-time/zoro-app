@@ -312,6 +312,12 @@ export const s = StyleSheet.create({
   roundedXl: {
     borderRadius: u(6),
   },
+  rounded2xl: {
+    borderRadius: u(7),
+  },
+  rounded3xl: {
+    borderRadius: u(8),
+  },
   roundedFull: {
     borderRadius: 999,
   },

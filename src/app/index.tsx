@@ -1,8 +1,12 @@
 import { useHeaderHeight } from "expo-router/build/react-navigation";
 import { useState } from "react";
 import { FlatList, Text, TextInput, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { s } from "@/ui/styles";
+import {
+  SafeAreaView,
+  useSafeAreaInsets,
+} from "react-native-safe-area-context";
+import { GlassPressable } from "@/components/GlassPressable";
+import { s, u } from "@/ui/styles";
 import { useTheme } from "@/ui/theme";
 
 type FoodItem = {
@@ -26,6 +30,7 @@ const initialFoods: FoodItem[] = [
 
 export default function Index() {
   const headerHeight = useHeaderHeight();
+  const insets = useSafeAreaInsets();
   const { c } = useTheme();
   const [foodText, setFoodText] = useState("");
   const [foods, setFoods] = useState(initialFoods);
@@ -56,9 +61,8 @@ export default function Index() {
         keyExtractor={(item) => item.id}
         contentContainerStyle={[
           s.p6,
-          s.gap3,
           s.flexGrow,
-          { paddingTop: headerHeight },
+          { paddingTop: headerHeight - u(6) },
         ]}
         ListHeaderComponent={
           <View
@@ -73,7 +77,14 @@ export default function Index() {
           </View>
         }
         renderItem={({ item }) => (
-          <View style={[s.flexRow, s.itemsStart, s.justifyBetween]}>
+          <View
+            style={[
+              s.flexRow,
+              s.itemsCenter,
+              s.justifyBetween,
+              { height: u(10) },
+            ]}
+          >
             <Text
               style={[s.textLg, s.fontNormal, s.flex1, { color: c.foreground }]}
               numberOfLines={1}
@@ -98,19 +109,39 @@ export default function Index() {
             selectionColor={c.primary}
             cursorColor={c.primary}
             multiline
-            textAlignVertical="top"
+            textAlignVertical="center"
             autoCorrect
             keyboardType="default"
             returnKeyType="done"
             style={[
               s.textLg,
               s.fontNormal,
-              s.py0,
-              { color: c.foreground, margin: 0 },
+              s.flex1,
+              s.textLeft,
+              { color: c.foreground, minHeight: u(10) },
             ]}
           />
         }
       />
+      <GlassPressable
+        onPress={() => {}}
+        containerStyle={{
+          position: "absolute",
+          left: u(4),
+          right: u(4),
+          bottom: insets.bottom + u(3),
+        }}
+        style={[
+          s.justifyCenter,
+          s.rounded3xl,
+          s.px5,
+          {
+            height: u(18),
+          },
+        ]}
+      >
+        <Text style={{ color: c.foreground }}>HelloWorld</Text>
+      </GlassPressable>
     </SafeAreaView>
   );
 }

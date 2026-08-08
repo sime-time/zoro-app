@@ -3,7 +3,7 @@ import { ScrollView, Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { SettingsGroup } from "@/components/settings/SettingsGroup";
 import { UpgradeButton } from "@/components/settings/UpgradeButton";
-import { s } from "@/ui/styles";
+import { s, u } from "@/ui/styles";
 import { useTheme } from "@/ui/theme";
 
 export default function SettingsScreen() {
@@ -17,7 +17,7 @@ export default function SettingsScreen() {
           s.flexGrow,
           s.p6,
           s.gap6,
-          { paddingTop: headerHeight },
+          { paddingTop: headerHeight - u(6) },
         ]}
         showsVerticalScrollIndicator={false}
       >
