@@ -1,10 +1,23 @@
-import { DrawerNav } from "@/components/drawer/DrawerNav";
+import { Stack } from "expo-router";
+import { u } from "@/ui/styles";
 import { ThemeProvider } from "@/ui/theme";
 
 export default function RootLayout() {
   return (
     <ThemeProvider>
-      <DrawerNav />
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="(drawer)" />
+        <Stack.Screen
+          name="sheets/nutrition-details"
+          options={{
+            presentation: "formSheet",
+            sheetAllowedDetents: [0.6, 0.75, 1],
+            sheetInitialDetentIndex: 0,
+            sheetGrabberVisible: true,
+            sheetCornerRadius: u(10),
+          }}
+        />
+      </Stack>
     </ThemeProvider>
   );
 }

@@ -1,3 +1,4 @@
+import { router } from "expo-router";
 import { useHeaderHeight } from "expo-router/build/react-navigation";
 import { useState } from "react";
 import { FlatList, Text, TextInput, View } from "react-native";
@@ -5,7 +6,9 @@ import {
   SafeAreaView,
   useSafeAreaInsets,
 } from "react-native-safe-area-context";
+import { DonutChart } from "@/components/charts/DonutChart";
 import { GlassPressable } from "@/components/GlassPressable";
+import { MacroLabel } from "@/components/MacroLabel";
 import { s, u } from "@/ui/styles";
 import { useTheme } from "@/ui/theme";
 
@@ -18,8 +21,8 @@ type FoodItem = {
 const initialFoods: FoodItem[] = [
   {
     id: "1",
-    name: "coffee 1 cup double espresso",
-    calories: 10,
+    name: "chicken thighs",
+    calories: 400,
   },
   {
     id: "2",
@@ -68,7 +71,7 @@ export default function Index() {
           <View
             style={[s.mb4, s.flex1, s.flexRow, s.itemsCenter, s.justifyBetween]}
           >
-            <Text style={[s.text2xl, s.fontSemibold, { color: c.foreground }]}>
+            <Text style={[s.textXl, s.fontSemibold, { color: c.foreground }]}>
               Today
             </Text>
             <Text style={[s.textLg, s.fontMedium, { color: c.muted }]}>
@@ -123,24 +126,72 @@ export default function Index() {
           />
         }
       />
+
       <GlassPressable
-        onPress={() => {}}
-        containerStyle={{
-          position: "absolute",
-          left: u(4),
-          right: u(4),
-          bottom: insets.bottom + u(3),
-        }}
-        style={[
-          s.justifyCenter,
-          s.rounded3xl,
-          s.px5,
+        onPress={() => router.push("/sheets/nutrition-details")}
+        containerStyle={[
+          s.shadow,
           {
-            height: u(18),
+            position: "absolute",
+            left: u(4),
+            right: u(4),
+            bottom: insets.bottom + u(3),
+          },
+        ]}
+        style={[
+          s.relative,
+          s.justifyBetween,
+          s.flexRow,
+          s.rounded3xl,
+          s.px6,
+          s.py3,
+          {
+            minHeight: u(18),
           },
         ]}
       >
-        <Text style={{ color: c.foreground }}>HelloWorld</Text>
+        <View
+          pointerEvents="none"
+          style={[
+            s.absolute,
+            s.itemsCenter,
+            {
+              top: u(1.25),
+              left: 0,
+              right: 0,
+            },
+          ]}
+        >
+          <View
+            style={[
+              s.roundedFull,
+              {
+                width: u(8),
+                height: u(1.1),
+                backgroundColor: c.muted,
+                opacity: 0.5,
+              },
+            ]}
+          />
+        </View>
+
+        <View style={[s.flexRow, s.itemsCenter, s.gap3]}>
+          <DonutChart value={653} max={2590} size={36} strokeWidth={u(1.5)} />
+          <View style={[s.itemsStart]}>
+            <Text style={[s.textSm, s.fontSemibold, { color: c.foreground }]}>
+              653 / 2470 cals
+            </Text>
+            <Text style={[s.textSm, s.fontMedium, { color: c.muted }]}>
+              1817 cals left
+            </Text>
+          </View>
+        </View>
+
+        <View style={[s.flexRow, s.itemsCenter, s.gap4]}>
+          <MacroLabel grams={82} label="protein" />
+          <MacroLabel grams={210} label="carbs" />
+          <MacroLabel grams={64} label="fat" />
+        </View>
       </GlassPressable>
     </SafeAreaView>
   );

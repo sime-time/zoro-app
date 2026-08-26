@@ -2,9 +2,10 @@ import { Drawer } from "expo-router/drawer";
 import { SymbolView } from "expo-symbols";
 import { CameraButton } from "@/components/camera/CameraButton";
 import { DrawerButton } from "@/components/drawer/DrawerButton";
+import { s } from "@/ui/styles";
 import { useTheme } from "@/ui/theme";
 
-export function DrawerNav() {
+export default function DrawerLayout() {
   const { c } = useTheme();
 
   return (
@@ -15,12 +16,8 @@ export function DrawerNav() {
         headerShadowVisible: false,
         headerTitle: "",
         headerTransparent: true,
-        headerLeftContainerStyle: {
-          paddingLeft: 16,
-        },
-        headerRightContainerStyle: {
-          paddingRight: 16,
-        },
+        headerLeftContainerStyle: s.pl4,
+        headerRightContainerStyle: s.pr4,
         sceneStyle: {
           backgroundColor: c.background,
         },

@@ -193,6 +193,62 @@ export const s = StyleSheet.create({
     paddingBottom: u(8),
   },
 
+  pl0: {
+    paddingLeft: 0,
+  },
+  pl1: {
+    paddingLeft: u(1),
+  },
+  pl2: {
+    paddingLeft: u(2),
+  },
+  pl3: {
+    paddingLeft: u(3),
+  },
+  pl4: {
+    paddingLeft: u(4),
+  },
+  pl5: {
+    paddingLeft: u(5),
+  },
+  pl6: {
+    paddingLeft: u(6),
+  },
+  pl7: {
+    paddingLeft: u(7),
+  },
+  pl8: {
+    paddingLeft: u(8),
+  },
+
+  pr0: {
+    paddingRight: 0,
+  },
+  pr1: {
+    paddingRight: u(1),
+  },
+  pr2: {
+    paddingRight: u(2),
+  },
+  pr3: {
+    paddingRight: u(3),
+  },
+  pr4: {
+    paddingRight: u(4),
+  },
+  pr5: {
+    paddingRight: u(5),
+  },
+  pr6: {
+    paddingRight: u(6),
+  },
+  pr7: {
+    paddingRight: u(7),
+  },
+  pr8: {
+    paddingRight: u(8),
+  },
+
   // Margin
   m0: {
     margin: 0,
@@ -264,6 +320,62 @@ export const s = StyleSheet.create({
   },
   mb8: {
     marginBottom: u(8),
+  },
+
+  ml0: {
+    marginLeft: 0,
+  },
+  ml1: {
+    marginLeft: u(1),
+  },
+  ml2: {
+    marginLeft: u(2),
+  },
+  ml3: {
+    marginLeft: u(3),
+  },
+  ml4: {
+    marginLeft: u(4),
+  },
+  ml5: {
+    marginLeft: u(5),
+  },
+  ml6: {
+    marginLeft: u(6),
+  },
+  ml7: {
+    marginLeft: u(7),
+  },
+  ml8: {
+    marginLeft: u(8),
+  },
+
+  mr0: {
+    marginRight: 0,
+  },
+  mr1: {
+    marginRight: u(1),
+  },
+  mr2: {
+    marginRight: u(2),
+  },
+  mr3: {
+    marginRight: u(3),
+  },
+  mr4: {
+    marginRight: u(4),
+  },
+  mr5: {
+    marginRight: u(5),
+  },
+  mr6: {
+    marginRight: u(6),
+  },
+  mr7: {
+    marginRight: u(7),
+  },
+  mr8: {
+    marginRight: u(8),
   },
 
   mxAuto: {
