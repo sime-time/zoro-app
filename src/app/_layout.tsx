@@ -11,7 +11,7 @@ export default function RootLayout() {
           name="sheets/nutrition-details"
           options={{
             presentation: "formSheet",
-            sheetAllowedDetents: [0.6, 0.75, 1],
+            sheetAllowedDetents: [0.6, 0.8],
             sheetInitialDetentIndex: 0,
             sheetGrabberVisible: true,
             sheetCornerRadius: u(10),

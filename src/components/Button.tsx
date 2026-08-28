@@ -23,6 +23,8 @@ import { useTheme } from "@/ui/theme";
 
 export type ButtonSize = "sm" | "md" | "lg";
 
+export type ButtonVariant = "default" | "ghost";
+
 export type ButtonProps = Omit<PressableProps, "style"> & {
   children?: ReactNode;
   label?: string;
@@ -32,6 +34,7 @@ export type ButtonProps = Omit<PressableProps, "style"> & {
   icon?: ReactNode;
   isIconOnly?: boolean;
   size?: ButtonSize;
+  variant?: ButtonVariant;
 };
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
@@ -46,6 +49,7 @@ export function Button({
   icon,
   isIconOnly,
   size = "md",
+  variant = "default",
   ...props
 }: ButtonProps) {
   const { c, resolvedTheme } = useTheme();
@@ -54,7 +58,9 @@ export function Button({
     isLiquidGlassAvailable() &&
     isGlassEffectAPIAvailable();
 
-  // Animations to match Liquid Glass
+  const isGhost = variant === "ghost";
+
+  // Non-glass animations to match Liquid Glass
   const opacity = useSharedValue(1);
   const animatedStyle = useAnimatedStyle(() => ({
     opacity: opacity.value,
@@ -78,11 +84,17 @@ export function Button({
     );
 
   if (canUseGlass) {
+    const tintColor = isGhost
+      ? undefined
+      : disabled
+        ? c.surfaceTertiary
+        : color;
+
     return (
       <Pressable accessibilityRole="button" disabled={disabled} {...props}>
         <GlassView
           colorScheme={resolvedTheme}
-          glassEffectStyle="clear"
+          glassEffectStyle={isGhost ? "none" : "clear"}
           isInteractive={!disabled}
           style={[
             s.flexRow,
@@ -93,7 +105,7 @@ export function Button({
             isIconOnly ? s.roundedFull : s.roundedLg,
             style,
           ]}
-          tintColor={disabled ? c.surfaceTertiary : color}
+          tintColor={tintColor}
         >
           {icon}
           {innerContent}
@@ -101,6 +113,12 @@ export function Button({
       </Pressable>
     );
   }
+
+  const backgroundColor = isGhost
+    ? "transparent"
+    : disabled
+      ? c.surfaceTertiary
+      : (color ?? c.surface);
 
   return (
     <AnimatedPressable
@@ -123,8 +141,8 @@ export function Button({
         isIconOnly ? iconOnlyStyles[size] : sizeStyles[size],
         isIconOnly ? s.roundedFull : s.roundedLg,
         {
-          backgroundColor: disabled ? c.surfaceTertiary : (color ?? c.surface),
-          borderColor: c.border,
+          backgroundColor: backgroundColor,
+          borderColor: isGhost ? "transparent" : c.border,
         },
         animatedStyle,
         style,

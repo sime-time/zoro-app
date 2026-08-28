@@ -28,6 +28,8 @@ export type ThemeColors = {
 
   success: string;
   successForeground: string;
+  info: string;
+  infoForeground: string;
   warning: string;
   warningForeground: string;
   destructive: string;
@@ -54,6 +56,9 @@ export const lightColors: ThemeColors = {
 
   success: "#34C759",
   successForeground: "#071C10",
+
+  info: "#4A90E2",
+  infoForeground: "#FFFFFF",
 
   warning: "#F5B544",
   warningForeground: "#211400",
@@ -82,6 +87,9 @@ export const darkColors: ThemeColors = {
 
   success: "#388A3E",
   successForeground: "#052E16",
+
+  info: "#5AA9FF",
+  infoForeground: "#001A33",
 
   warning: "#F5B544",
   warningForeground: "#211400",
