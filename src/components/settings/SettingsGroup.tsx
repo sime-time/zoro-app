@@ -61,6 +61,18 @@ export function SettingsGroup() {
         showDivider
       />
       <SettingRow
+        title="Edit goals"
+        icon={
+          <SymbolView
+            name={{ ios: "flag", android: "flag" }}
+            size={18}
+            tintColor={c.foreground}
+          />
+        }
+        onPress={() => console.log("Edit goals!")}
+        showDivider
+      />
+      <SettingRow
         title={themeLabels.title}
         icon={
           <SymbolView name={themeLabels} size={18} tintColor={c.foreground} />

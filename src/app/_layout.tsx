@@ -1,23 +1,34 @@
 import { Stack } from "expo-router";
+import { KeyboardProvider } from "react-native-keyboard-controller";
 import { u } from "@/ui/styles";
-import { ThemeProvider } from "@/ui/theme";
+import { ThemeProvider, useTheme } from "@/ui/theme";
 
 export default function RootLayout() {
   return (
-    <ThemeProvider>
-      <Stack screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="(drawer)" />
-        <Stack.Screen
-          name="sheets/nutrition-details"
-          options={{
-            presentation: "formSheet",
-            sheetAllowedDetents: [0.6, 0.8],
-            sheetInitialDetentIndex: 0,
-            sheetGrabberVisible: true,
-            sheetCornerRadius: u(10),
-          }}
-        />
-      </Stack>
-    </ThemeProvider>
+    <KeyboardProvider>
+      <ThemeProvider>
+        <AppStack />
+      </ThemeProvider>
+    </KeyboardProvider>
+  );
+}
+
+function AppStack() {
+  const { c } = useTheme();
+  return (
+    <Stack screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="(drawer)" />
+      <Stack.Screen
+        name="sheets/total-nutrition"
+        options={{
+          presentation: "formSheet",
+          sheetAllowedDetents: [0.6, 1],
+          sheetInitialDetentIndex: 0,
+          sheetGrabberVisible: true,
+          sheetCornerRadius: u(10),
+          contentStyle: { backgroundColor: c.background },
+        }}
+      />
+    </Stack>
   );
 }

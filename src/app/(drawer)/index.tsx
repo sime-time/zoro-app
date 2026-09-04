@@ -8,7 +8,9 @@ import {
 } from "react-native-safe-area-context";
 import { DonutChart } from "@/components/charts/DonutChart";
 import { GlassPressable } from "@/components/GlassPressable";
-import { MacroLabel } from "@/components/MacroLabel";
+import { DayHeaderDropdown } from "@/components/nutrition/DayHeaderDropdown";
+import { MacroLabel } from "@/components/nutrition/MacroLabel";
+import { getPreviousDays, toDayId } from "@/lib/date";
 import { s, u } from "@/ui/styles";
 import { useTheme } from "@/ui/theme";
 
@@ -35,8 +37,22 @@ export default function Index() {
   const headerHeight = useHeaderHeight();
   const insets = useSafeAreaInsets();
   const { c } = useTheme();
+
   const [foodText, setFoodText] = useState("");
   const [foods, setFoods] = useState(initialFoods);
+  const [selectedDayId, setSelectedDayId] = useState(toDayId(new Date()));
+
+  const nutritionDays = getPreviousDays(4);
+
+  const foodTextStyle = [
+    s.textLg,
+    s.fontNormal,
+    s.flex1,
+    {
+      color: c.foreground,
+      minHeight: s.textLg.lineHeight,
+    },
+  ];
 
   const addFood = () => {
     const name = foodText.trim();
@@ -68,31 +84,28 @@ export default function Index() {
           { paddingTop: headerHeight - u(6) },
         ]}
         ListHeaderComponent={
-          <View
-            style={[s.mb4, s.flex1, s.flexRow, s.itemsCenter, s.justifyBetween]}
-          >
-            <Text style={[s.textXl, s.fontSemibold, { color: c.foreground }]}>
-              Today
-            </Text>
-            <Text style={[s.textLg, s.fontMedium, { color: c.muted }]}>
-              240 cals
-            </Text>
-          </View>
+          <DayHeaderDropdown
+            days={nutritionDays}
+            selectedDayId={selectedDayId}
+            calories={2407}
+            onSelectDay={setSelectedDayId}
+            onViewAllHistory={() => {
+              // Later: open history sheet.
+            }}
+          />
         }
         renderItem={({ item }) => (
           <View
             style={[
               s.flexRow,
-              s.itemsCenter,
               s.justifyBetween,
-              { height: u(10) },
+              {
+                minHeight: u(10),
+                paddingVertical: u(1.5),
+              },
             ]}
           >
-            <Text
-              style={[s.textLg, s.fontNormal, s.flex1, { color: c.foreground }]}
-              numberOfLines={1}
-              ellipsizeMode="tail"
-            >
+            <Text style={foodTextStyle} numberOfLines={1} ellipsizeMode="tail">
               {item.name}
             </Text>
 
@@ -111,24 +124,23 @@ export default function Index() {
             placeholderTextColor={c.muted}
             selectionColor={c.primary}
             cursorColor={c.primary}
-            multiline
-            textAlignVertical="center"
             autoCorrect
             keyboardType="default"
             returnKeyType="done"
+            textAlignVertical="top"
+            multiline
             style={[
-              s.textLg,
-              s.fontNormal,
-              s.flex1,
-              s.textLeft,
-              { color: c.foreground, minHeight: u(10) },
+              foodTextStyle,
+              {
+                paddingVertical: u(0.9),
+              },
             ]}
           />
         }
       />
 
       <GlassPressable
-        onPress={() => router.push("/sheets/nutrition-details")}
+        onPressOut={() => router.push("/sheets/total-nutrition")}
         containerStyle={[
           s.shadow,
           {
@@ -166,8 +178,8 @@ export default function Index() {
             style={[
               s.roundedFull,
               {
-                width: u(8),
-                height: u(1.1),
+                width: u(8.5),
+                height: u(1.15),
                 backgroundColor: c.muted,
                 opacity: 0.5,
               },

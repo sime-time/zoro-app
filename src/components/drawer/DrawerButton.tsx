@@ -12,7 +12,7 @@ export function DrawerButton() {
   return (
     <Button isIconOnly={true} onPress={() => navigation.openDrawer()}>
       <SymbolView
-        name={{ ios: "sidebar.left", android: "menu" }}
+        name={{ ios: "line.3.horizontal", android: "menu" }}
         size={26}
         tintColor={c.foreground}
       />

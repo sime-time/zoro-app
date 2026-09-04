@@ -8,12 +8,12 @@ import { s, u } from "@/ui/styles";
 import { useTheme } from "@/ui/theme";
 
 const calories = {
-  value: 653,
+  value: 1910,
   goal: 2470,
 };
 
 const protein = {
-  value: 62,
+  value: 135,
   goal: 135,
 };
 
@@ -23,7 +23,7 @@ const carbs = {
 };
 
 const fat = {
-  value: 64,
+  value: 95,
   goal: 95,
 };
 
@@ -57,7 +57,7 @@ function NutritionBar({
   );
 }
 
-export default function NutritionDetailsSheet() {
+export default function TotalNutritionSheet() {
   const { c } = useTheme();
 
   const caloriesLeft = calories.goal - calories.value;
@@ -77,7 +77,7 @@ export default function NutritionDetailsSheet() {
             <Text style={[s.text2xl, s.fontSemibold, { color: c.foreground }]}>
               {calories.value} / {calories.goal} cals
             </Text>
-            <Text style={[s.textBase, s.fontMedium, { color: c.muted }]}>
+            <Text style={[s.textLg, s.fontMedium, { color: c.muted }]}>
               {caloriesLeft} cals left
             </Text>
           </View>

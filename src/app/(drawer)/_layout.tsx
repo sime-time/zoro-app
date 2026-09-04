@@ -91,6 +91,20 @@ export default function DrawerLayout() {
           ),
         }}
       />
+
+      <Drawer.Screen
+        name="keyboard"
+        options={{
+          drawerLabel: "Keyboard",
+          drawerIcon: ({ color, size }) => (
+            <SymbolView
+              name={{ ios: "gearshape.fill", android: "settings" }}
+              size={size}
+              tintColor={color}
+            />
+          ),
+        }}
+      />
     </Drawer>
   );
 }
