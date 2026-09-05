@@ -47,7 +47,7 @@ function NutritionBar({
           {title}
         </Text>
 
-        <Text style={[s.textLg, s.fontSemibold, { color: c.foreground }]}>
+        <Text style={[s.textLg, s.fontMedium, { color: c.foreground }]}>
           {value}/{goal}g
         </Text>
       </View>

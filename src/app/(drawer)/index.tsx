@@ -2,6 +2,7 @@ import { router } from "expo-router";
 import { useHeaderHeight } from "expo-router/build/react-navigation";
 import { useState } from "react";
 import { FlatList, Text, TextInput, View } from "react-native";
+import { KeyboardAwareScrollView } from "react-native-keyboard-controller";
 import {
   SafeAreaView,
   useSafeAreaInsets,
@@ -23,12 +24,22 @@ type FoodItem = {
 const initialFoods: FoodItem[] = [
   {
     id: "1",
-    name: "chicken thighs",
+    name: "Chicken thighs",
     calories: 400,
   },
   {
     id: "2",
-    name: "croissant",
+    name: "Croissant",
+    calories: 230,
+  },
+  {
+    id: "4",
+    name: "White rice",
+    calories: 230,
+  },
+  {
+    id: "6",
+    name: "Tuna",
     calories: 230,
   },
 ];
@@ -77,11 +88,18 @@ export default function Index() {
     <SafeAreaView style={s.flex1}>
       <FlatList
         data={foods}
+        renderScrollComponent={(props) => (
+          <KeyboardAwareScrollView {...props} bottomOffset={u(24)} />
+        )}
+        keyboardDismissMode="interactive"
         keyExtractor={(item) => item.id}
         contentContainerStyle={[
           s.p6,
           s.flexGrow,
-          { paddingTop: headerHeight - u(6) },
+          {
+            paddingTop: headerHeight - u(6),
+            paddingBottom: insets.bottom + u(24),
+          },
         ]}
         ListHeaderComponent={
           <DayHeaderDropdown
