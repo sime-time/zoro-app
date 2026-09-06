@@ -7,7 +7,7 @@ import {
 import { u } from "@/ui/styles";
 import { useTheme } from "@/ui/theme";
 
-interface StackedBarChartSegment {
+export interface StackedBarChartSegment {
   value: number;
   color: string;
 }
@@ -17,7 +17,7 @@ export function StackedBarChart({
   orientation = "horizontal",
   length = "100%",
   thickness = u(5),
-  gap = u(1),
+  gap = 0,
   borderRadius = 999,
   trackColor,
   style,
@@ -62,14 +62,12 @@ export function StackedBarChart({
         visibleSegments.map((segment, index) => (
           <View
             key={`${segment.color}-${index.toString()}`}
-            style={[
-              {
-                overflow: "hidden",
-                flex: segment.value,
-                backgroundColor: segment.color,
-                borderRadius,
-              },
-            ]}
+            style={{
+              overflow: "hidden",
+              flex: segment.value,
+              backgroundColor: segment.color,
+              borderRadius,
+            }}
           />
         ))}
     </View>
