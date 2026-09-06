@@ -29,6 +29,17 @@ function AppStack() {
           contentStyle: { backgroundColor: c.background },
         }}
       />
+      <Stack.Screen
+        name="sheets/food-details"
+        options={{
+          presentation: "formSheet",
+          sheetAllowedDetents: [0.8],
+          sheetInitialDetentIndex: 0,
+          sheetGrabberVisible: true,
+          sheetCornerRadius: u(10),
+          contentStyle: { backgroundColor: c.background },
+        }}
+      />
     </Stack>
   );
 }

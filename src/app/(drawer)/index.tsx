@@ -1,7 +1,7 @@
 import { router } from "expo-router";
 import { useHeaderHeight } from "expo-router/build/react-navigation";
 import { useState } from "react";
-import { FlatList, Text, TextInput, View } from "react-native";
+import { FlatList, Pressable, Text, TextInput, View } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-controller";
 import {
   SafeAreaView,
@@ -9,8 +9,7 @@ import {
 } from "react-native-safe-area-context";
 import { DonutChart } from "@/components/charts/DonutChart";
 import { GlassPressable } from "@/components/GlassPressable";
-import { DayHeaderDropdown } from "@/components/nutrition/DayHeaderDropdown";
-import { MacroLabel } from "@/components/nutrition/MacroLabel";
+import { NutritionHeaderDropdown } from "@/components/nutrition/NutritionHeaderDropdown";
 import { getPreviousDays, toDayId } from "@/lib/date";
 import { s, u } from "@/ui/styles";
 import { useTheme } from "@/ui/theme";
@@ -102,7 +101,7 @@ export default function Index() {
           },
         ]}
         ListHeaderComponent={
-          <DayHeaderDropdown
+          <NutritionHeaderDropdown
             days={nutritionDays}
             selectedDayId={selectedDayId}
             calories={2407}
@@ -113,7 +112,8 @@ export default function Index() {
           />
         }
         renderItem={({ item }) => (
-          <View
+          <Pressable
+            onPress={() => router.push("/sheets/food-details")}
             style={[
               s.flexRow,
               s.justifyBetween,
@@ -130,7 +130,7 @@ export default function Index() {
             <Text style={[s.textLg, s.fontMedium, { color: c.muted }]}>
               {item.calories}
             </Text>
-          </View>
+          </Pressable>
         )}
         ListFooterComponent={
           <TextInput
@@ -224,5 +224,18 @@ export default function Index() {
         </View>
       </GlassPressable>
     </SafeAreaView>
+  );
+}
+
+function MacroLabel({ grams, label }: { grams: number; label: string }) {
+  const { c } = useTheme();
+
+  return (
+    <View style={s.itemsEnd}>
+      <Text style={[s.textSm, s.fontSemibold, { color: c.foreground }]}>
+        {grams}g
+      </Text>
+      <Text style={[s.textSm, s.fontMedium, { color: c.muted }]}>{label}</Text>
+    </View>
   );
 }

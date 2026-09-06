@@ -25,7 +25,7 @@ import { useTheme } from "@/ui/theme";
 
 const DROPDOWN_HEIGHT = u(16);
 
-export function DayHeaderDropdown({
+export function NutritionHeaderDropdown({
   days,
   selectedDayId,
   calories,
