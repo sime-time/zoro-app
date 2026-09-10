@@ -53,6 +53,9 @@ export const s = StyleSheet.create({
   justifyAround: {
     justifyContent: "space-around",
   },
+  justifyEvenly: {
+    justifyContent: "space-evenly",
+  },
 
   selfStart: {
     alignSelf: "flex-start",
@@ -400,6 +403,9 @@ export const s = StyleSheet.create({
   },
   gap6: {
     gap: u(6),
+  },
+  gap7: {
+    gap: u(7),
   },
   gap8: {
     gap: u(8),
