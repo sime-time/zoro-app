@@ -104,17 +104,17 @@ export default function TotalNutritionSheet() {
 
         <View style={[s.flexRow, s.justifyBetween, s.gap6]}>
           <NutritionBar
-            name="Carbs"
-            value={carbs.value}
-            goal={carbs.goal}
-            color={c.info}
-          />
-
-          <NutritionBar
             name="Protein"
             value={protein.value}
             goal={protein.goal}
             color={c.destructive}
+          />
+
+          <NutritionBar
+            name="Carbs"
+            value={carbs.value}
+            goal={carbs.goal}
+            color={c.info}
           />
 
           <NutritionBar
@@ -129,7 +129,7 @@ export default function TotalNutritionSheet() {
           label="Edit my goals"
           variant="ghost"
           textColor={c.mutedForeground}
-          style={[s.justifyCenter, s.mt2]}
+          style={[s.justifyCenter]}
           icon={
             <SymbolView
               name={{ ios: "flag", android: "flag" }}

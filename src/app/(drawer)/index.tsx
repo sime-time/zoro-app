@@ -160,7 +160,7 @@ export default function Index() {
       <GlassPressable
         onPressOut={() => router.push("/sheets/total-nutrition")}
         containerStyle={[
-          s.shadow,
+          s.shadowSm,
           {
             position: "absolute",
             left: u(4),

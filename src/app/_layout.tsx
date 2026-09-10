@@ -22,7 +22,7 @@ function AppStack() {
         name="sheets/total-nutrition"
         options={{
           presentation: "formSheet",
-          sheetAllowedDetents: [0.42],
+          sheetAllowedDetents: [0.4],
           sheetInitialDetentIndex: 0,
           sheetGrabberVisible: true,
           sheetCornerRadius: u(10),
